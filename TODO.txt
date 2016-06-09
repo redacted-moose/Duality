@@ -1,0 +1,29 @@
+TODO:
+######
+
+MAP:			-- Highest priority -- 
+	-come up with map drawings && layouts
+		-> where to place what
+		-> different places
+		--------> Focus on Tutorial
+	
+	-> Use template from page 16 in pdf docs	
+
+	-Move Character
+		-> 3rd Person Cam
+		-> 
+
+HUD	:
+
+	-- layout stuff
+	- example in docs page 19 & 20
+		-> Mana && live
+	--> like in Quicksnap game 
+
+	-add map to the HUD
+		-> place on map
+
+Events and story:
+	-> scripting for plot
+	etc. etc.
+	
