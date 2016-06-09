@@ -1,0 +1,57 @@
+to Do´s:
+
+-useful Assets/plugins:
+	- Models 
+	- Mechanics
+	-> configure for our needs
+	
+Goal: 
+	1. tutorial
+	2. [small] Open World
+	3. Characters
+		-Player
+		-Enemys
+		-Npcs
+	4. World
+		-Cave
+		-Village
+		-Forrest
+	5. Menu 
+		-Pause
+		-settings
+		-game items
+		-informations
+		
+
+Weekplan:
+
+	1.Week:
+	
+		Research:
+			-Assets
+			-Templates
+			-Code Sharing
+			-character model(s)
+			-World
+				-trees 
+				-plains
+				-rocks
+				-houses
+				-people
+		(understand Templates/Assets 
+		well enouth to use)
+		
+	2.Week
+		
+		start to put things together:
+			-tutorial part
+			-HUD
+		
+		Goal:
+			-part of the tutorial completed and playable
+			-Decide how much time the rest will take
+			-using of git reposetory
+		
+			
+
+
