@@ -24,23 +24,48 @@ Maps:
 	--> trees / rocks
 	--> water (river)
 	--> enemies
+		--> gnomes
+		--> trolls
+		--> bears
+		--> spiders
+		
+	objectives:
+		--> teach fighting & blocking with shield
+		--> teach move objects & puzzles
 
 
 --> Village (Scene_2)
 	--> Character: combined
 	--> Buildings (not enterable)
-	--> NPCs / Enemies
+	--> NPCs / (Enemies)
 	
+	objectives:
+		--> talk to people
+			--> speech-bubbles
+				--> (sound-files later)
+				--> maybe mumbling
+		--> get information
+		--> meet the mayor
+		--> idea of the plot
+		--> finish tutorial with cut-scene
 	
 	
 --> Characters
 	Sol:
 		--> sword
 		--> almost no jumps
+		--> shield for protection
+		
+		--> move heavy objects
+		--> solve puzzles with objects
+		--> not good at sneaking
 		
 	Sin:
 		--> dagger
 		--> can jump
+		--> dodging for protection
+		
+		--> good at sneaking
 		
 		
 
