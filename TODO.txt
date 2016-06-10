@@ -1,6 +1,19 @@
 TODO:
 ######
 
+
+Till 2016-0-17;
+
+Forest + Sol (Character) : Albert (Andy)
+
+Village: Chris
+
+Cave: Simon
+
+
+Characters + Animations: Max
+
+
 MAP:			-- Highest priority -- 
 	-come up with map drawings && layouts
 		-> where to place what
