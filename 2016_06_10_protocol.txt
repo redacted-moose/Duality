@@ -1,0 +1,53 @@
+Tutorial & Map
+
+Tutorial: What we want to achieve
+	--> movements
+	--> what charakter is good for what
+	--> introduce charakter mechanics + HUD
+	--> get started with plot --> wake up --> find story in environment
+
+Maps:
+
+--> Cave (Scene_0)
+	--> Character: Sin
+	--> roof (?)
+	--> hole inside "hill"
+	--> rocks
+	--> water
+	--> light (torches)
+	--> Enemies
+
+
+
+--> Forrest (Scene_1)
+	--> Character: Sol
+	--> trees / rocks
+	--> water (river)
+	--> enemies
+
+
+--> Village (Scene_2)
+	--> Character: combined
+	--> Buildings (not enterable)
+	--> NPCs / Enemies
+	
+	
+	
+--> Characters
+	Sol:
+		--> sword
+		--> almost no jumps
+		
+	Sin:
+		--> dagger
+		--> can jump
+		
+		
+
+Animations:
+	--> foot
+	--> fighting
+	--> background
+	--> etc
+
+	
