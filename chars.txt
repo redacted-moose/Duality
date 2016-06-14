@@ -1,0 +1,60 @@
+###################
+#Usage of Characters and Animations
+#Max - 14 Jun 2016
+###################
+
+
+1: Characters
+--------------
+tested with "Bearpocalypse" from "Mecanim GDC 2013"
+and the "A03"-char from "Female Warrior Princess 1.0" -  also form Mechanim! -> Merging should be "easy" 
+
+	+ 'bearapocalypse'
+		-> in hierachy select player->dude:
+		-> inspector shows following scripts:
+			-Player 		-> "Base script" - seems like binding animation to keyboard / joystick (also logging stuff)
+			-Recorder		-> "works like animator" -> brings textures and animations to skeleton(?)
+			-Look Ahead		-> player looks into direction of contoller (while running)
+			-Action			-> brings the slide/jump actions to the player woks with Animator & CharacterController
+			-Damage Receiver	-> what happens when the player is hit? - again works with animator
+			-Bazooka		-> not shure----this seems like giving the Player a Bazooka.....but i didnt find one on the field....
+			-Player_Shoot		-> does what it sounds like - player shoots bubbles....from the bazooka?
+			-Karma			-> defines what happens when the player falls out of the world -> reset above ground
+	
+	+ 'Princess'
+		-> select the 'A03'- Prefab and place it into the environment - change the 'TAG' in inspector to 'Player'
+		-> Camera form this example is connectet to Character - remove it!
+		-> inspector on whole Player object has only the 'CharacterDemoContoller'
+		 	- Uses only the "update"- methode to implement movement etc
+			- mouse movements could be exchange  for keyboard movements (now moves to the point that is clicked at)
+				-somehow this is conectet to the floor that she walks on......
+				- she also always moves (rotates) when the weapons are changed
+				- have to connect her somehow with the floor - [CANNOT MOVE]
+	
+	+ Conclusion:
+		-> Seems like all Charakters have a "ROOT"-point that brings up the Motion-skelton:
+			+Princess : 	
+				- under ROOT there are 'hips' as well as Left / Right thigh and a spine	
+				- ths structure goes to some body parts
+3: Use of 3rd Person camera
+--------------
+	+ looks quite easy
+		-> Camera is Placed somewhere inside the world
+		-> set the script "ThirdPersonCamera"
+		-> tries to follow the "Player"-tagged object
+
+	====> Thats it -> 3rd Person work	====> Thats it -> 3rd Person works
+
+4: use mouse or Keyboard to controll
+--------------
+	+ movement for Warrior Princes is done by using the mouse to click on places -> like in Diablo etc.
+	+ movement for Dude is done by keyboard or Joystick movement  -> I guess we prefer this one
+	
+	+ Problem here is to convert the movement from one Char to the other
+		-> try to teach the princess to listen to Keyboard
+		-> or 
+		-> try to make the Dude look like the princess?
+	
+		-> Dude has smooth movements and is used quite intuitiv to play
+		-> Princess has "onBoard" fighting and preconfigured weapons (including Animations)
+
