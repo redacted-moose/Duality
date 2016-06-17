@@ -1,8 +1,8 @@
+
 ###################
 #Usage of Characters and Animations
 #Max - 14 Jun 2016
 ###################
-
 
 1: Characters
 --------------
@@ -24,12 +24,15 @@ and the "A03"-char from "Female Warrior Princess 1.0" -  also form Mechanim! -> 
 	+ 'Princess'
 		-> select the 'A03'- Prefab and place it into the environment - change the 'TAG' in inspector to 'Player'
 		-> Camera form this example is connectet to Character - remove it!
-		-> inspector on whole Player object has only the 'CharacterDemoContoller'
+		-> inspector on whole Player object is controlled using only the 'CharacterDemoContoller' -script
 		 	- Uses only the "update"- methode to implement movement etc
 			- mouse movements could be exchange  for keyboard movements (now moves to the point that is clicked at)
 				-somehow this is conectet to the floor that she walks on......
 				- she also always moves (rotates) when the weapons are changed
 				- have to connect her somehow with the floor - [CANNOT MOVE]
+		-> the outfitter script takes care of Weapons
+			- display the selectet weapon.
+			- use the fitting movemet/hit/shot/etc. animation
 	
 	+ Conclusion:
 		-> Seems like all Charakters have a "ROOT"-point that brings up the Motion-skelton:
@@ -51,10 +54,32 @@ and the "A03"-char from "Female Warrior Princess 1.0" -  also form Mechanim! -> 
 	+ movement for Dude is done by keyboard or Joystick movement  -> I guess we prefer this one
 	
 	+ Problem here is to convert the movement from one Char to the other
+---------
 		-> try to teach the princess to listen to Keyboard
 		-> or 
 		-> try to make the Dude look like the princess?
-	
+---------
 		-> Dude has smooth movements and is used quite intuitiv to play
 		-> Princess has "onBoard" fighting and preconfigured weapons (including Animations)
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Change controlls form Mouse- movement of the Princess to wsad-movement :
+	- one way is to re-write the Demo-Controller 	[prefered]
+	- other way would be to integragte the locomotion.cs from bearapocalypse (more complicated but more features)
+
+
+
+
+###################
+#Update for Char creation:
+#Max - 16 Jun 2016
+###################
+
+Different way to include a Char into the world:
+
+	use the Princess from Mechanim - all-start-something		further I will just call her "Pi"
+	use the thrid person contoller + scripts from QuickSnap
+
+1: drag and drop Pi into your world, and remove the scripts that are bound to her in the inspector pane
+2: drag and drop the scripts 'Character Motor' and 'FPS Input Contoller' on PI on the inspcetor panel
+3: 
