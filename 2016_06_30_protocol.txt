@@ -1,0 +1,17 @@
+2016_06_30 Protocol
+
+What we have:
+- 3 Levels
+- 1 Character
+- move between levels
+- start menu
+
+
+
+What we need:
+- NPCs
+- mechanism to switch between characters (Max)
+- HUD + Settings Menu (Albert & Andi)
+-Speech Bubbles (Albert & Andi)
+- enemies (Chris)
+- character specific special abilities (Chris & Simon)
