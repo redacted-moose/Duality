@@ -29,3 +29,10 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# ============ #
+# Other        #
+# ============ #
+Assets/Store\ Assets/
+Assets/Standard\ Assets/
+Builds/
