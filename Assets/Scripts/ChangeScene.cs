@@ -31,8 +31,9 @@ public class ChangeScene : MonoBehaviour {
 		GameObject player = other.gameObject;
         SceneManager.LoadScene((int)target);
 		if (player.tag == "Player") {
-			Transform t = player.GetComponent<Transform>().transform;
-			t.position = new Vector3(x, y, z);
+			// Transform t = player.GetComponent<Transform>().transform;
+			// t.position = new Vector3(x, y, z);
+            Player.loadPosition = new Vector3(x, y, z);
 		}
     }
 }
