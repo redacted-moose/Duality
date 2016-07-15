@@ -44,8 +44,26 @@ public class HUDController : MonoBehaviour {
 	private Button currentSpell2;
 
 
+	private static GameObject sinCharacter;
+	private static GameObject solCharacter;
+
 	public void changeCharacter(SinOrSol who){
 		whoAmI = who;
+
+
+		if (sinCharacter.activeSelf) {
+
+			print ("Sin is active");
+
+
+
+		}
+		else{
+
+			print ("Sol is active");
+
+
+		}
 
 		switch (who) {
 
@@ -63,6 +81,9 @@ public class HUDController : MonoBehaviour {
 			}
 
 
+			sinCharacter.SetActive (false);
+			solCharacter.SetActive (true);
+
 			break;
 
 		case SinOrSol.Sol:
@@ -78,8 +99,28 @@ public class HUDController : MonoBehaviour {
 				obj.gameObject.SetActive (true);
 			}
 
+			solCharacter.SetActive (false);
+			sinCharacter.SetActive (true);
+
 			break;
 		}
+
+
+	}
+
+
+	public void changeCharacter(){
+
+		if (whoAmI == SinOrSol.Sin) {
+
+			changeCharacter (SinOrSol.Sol);
+
+		} else {
+
+			changeCharacter (SinOrSol.Sin);
+
+		}
+
 	}
 
 	public SinOrSol currentCharacter(){
@@ -127,6 +168,9 @@ public class HUDController : MonoBehaviour {
 
 		singleton = this;
 		// Find all HUD-Elements and attach to the objects
+
+		sinCharacter = GameObject.FindGameObjectWithTag ("Sin-Character");
+		solCharacter = GameObject.FindGameObjectWithTag ("Sol-Character");
 
 		GameObject temp = GameObject.FindGameObjectWithTag ("LifeSlider");
 
@@ -237,20 +281,8 @@ public class HUDController : MonoBehaviour {
 		}
 
 
-
-		if (Input.GetKeyDown (KeyCode.R)) {
-
-			if (whoAmI == SinOrSol.Sin) {
-				whoAmI = SinOrSol.Sol;
-			} else {
-
-				whoAmI = SinOrSol.Sin;
-
-			}
-			changeCharacter (whoAmI);
-
-		}
 	}
+
 
 
 
