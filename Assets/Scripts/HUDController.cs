@@ -47,122 +47,10 @@ public class HUDController : MonoBehaviour {
 	private static GameObject sinCharacter;
 	private static GameObject solCharacter;
 
-	public void changeCharacter(SinOrSol who){
-		whoAmI = who;
+	private GameObject currentCharacter;
+	private GameObject otherCharacter;
 
-
-		if (sinCharacter.activeSelf) {
-
-			print ("Sin is active");
-
-
-
-		}
-		else{
-
-			print ("Sol is active");
-
-
-		}
-
-		switch (who) {
-
-		case SinOrSol.Sin:
-			currentWeapon = sinWeapon;
-			currentShield = sinShield;
-			currentSpell2 = sinSpell2;
-
-			foreach(Button obj in sinElements){
-				obj.gameObject.SetActive (true);
-			}
-
-			foreach(Button obj in solElements){
-				obj.gameObject.SetActive (false);
-			}
-
-
-			sinCharacter.SetActive (false);
-			solCharacter.SetActive (true);
-
-			break;
-
-		case SinOrSol.Sol:
-			currentWeapon = solWeapon;
-			currentShield = solShield;
-			currentSpell2 = solSpell2;
-
-			foreach(Button obj in sinElements){
-				obj.gameObject.SetActive (false);
-			}
-
-			foreach(Button obj in solElements){
-				obj.gameObject.SetActive (true);
-			}
-
-			solCharacter.SetActive (false);
-			sinCharacter.SetActive (true);
-
-			break;
-		}
-
-
-	}
-
-
-	public void changeCharacter(){
-
-		if (whoAmI == SinOrSol.Sin) {
-
-			changeCharacter (SinOrSol.Sol);
-
-		} else {
-
-			changeCharacter (SinOrSol.Sin);
-
-		}
-
-	}
-
-	public SinOrSol currentCharacter(){
-		return whoAmI;
-	}
-
-	public void decreaseLife(float value){
-		lifeSlider.normalizedValue -= value;
-	}
-
-	public void decreaseMana(float value){
-		manaSlider.normalizedValue -= value;
-	}
-
-	public void decreasStamina(float value){
-		staminaSlider.normalizedValue -= value;
-	}
-
-	public void increaseLife(float value){
-		lifeSlider.normalizedValue += value;
-	}
-		
-	public void increaseMana(float value){
-		manaSlider.normalizedValue += value;
-	}
-
-	public void increaseStamina(float value){
-		staminaSlider.normalizedValue += value;
-	}
-
-	public void setLife(float life){
-		lifeSlider.normalizedValue = life;
-	}
-
-	public void setMana(float mana){
-		manaSlider.normalizedValue = mana;
-	}
-
-	public void setStamina(float stamina){
-		staminaSlider.normalizedValue = stamina;
-	}
-		
+			
 	// Use this for initialization
 	void Start () {
 
@@ -171,6 +59,7 @@ public class HUDController : MonoBehaviour {
 
 		sinCharacter = GameObject.FindGameObjectWithTag ("Sin-Character");
 		solCharacter = GameObject.FindGameObjectWithTag ("Sol-Character");
+
 
 		GameObject temp = GameObject.FindGameObjectWithTag ("LifeSlider");
 
@@ -274,25 +163,125 @@ public class HUDController : MonoBehaviour {
 			currentSpell2.interactable = false;
 		}
 
-		if (Input.GetKey (KeyCode.W) && !Input.GetKey (KeyCode.LeftShift)) {
+		if ( (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.D) ) && !Input.GetKey (KeyCode.LeftShift)) {
 			decreasStamina (0.001f);
 		} else {
 			increaseStamina (0.0005f);
 		}
+			
+	}
 
+
+	public void changeCharacter(SinOrSol who){
+		whoAmI = who;
+
+		bool isSin = true;
+
+		switch (who) {
+
+		case SinOrSol.Sin:
+			currentWeapon = sinWeapon;
+			currentShield = sinShield;
+			currentSpell2 = sinSpell2;
+
+			currentCharacter = sinCharacter;
+			otherCharacter = solCharacter;
+
+			isSin = true;
+
+			break;
+
+		case SinOrSol.Sol:
+			currentWeapon = solWeapon;
+			currentShield = solShield;
+			currentSpell2 = solSpell2;
+
+			currentCharacter = solCharacter;
+			otherCharacter = sinCharacter;
+
+			isSin = false;
+
+			break;
+		}
+
+		foreach(Button obj in sinElements){
+			obj.gameObject.SetActive (isSin);
+		}
+
+		foreach(Button obj in solElements){
+			obj.gameObject.SetActive (!isSin);
+		}
+
+		/*
+		if (isSin) {
+
+			sinCharacter.transform.position = solCharacter.transform.position;
+
+		} else {
+
+			solCharacter.transform.position = sinCharacter.transform.position;
+
+		}
+		*/
+
+		currentCharacter.transform.position = otherCharacter.transform.position;
+
+		MouseOrbitImproved.target = currentCharacter.transform;
+
+		sinCharacter.SetActive (isSin);
+		solCharacter.SetActive (!isSin);
 
 	}
 
 
+	public void changeCharacter(){
 
+		if (whoAmI == SinOrSol.Sin) {
 
-	void OnCollisionEnter(Collision col){
+			changeCharacter (SinOrSol.Sol);
 
-		print ("HUD col");
-		if (col.gameObject.tag == "Enemy") {
+		} else {
 
-			print ("hit enemy");
-			decreaseLife (0.1f);
+			changeCharacter (SinOrSol.Sin);
+
 		}
 	}
+
+	public void decreaseLife(float value){
+		lifeSlider.normalizedValue -= value;
+	}
+
+	public void decreaseMana(float value){
+		manaSlider.normalizedValue -= value;
+	}
+
+	public void decreasStamina(float value){
+		staminaSlider.normalizedValue -= value;
+	}
+
+	public void increaseLife(float value){
+		lifeSlider.normalizedValue += value;
+	}
+
+	public void increaseMana(float value){
+		manaSlider.normalizedValue += value;
+	}
+
+	public void increaseStamina(float value){
+		staminaSlider.normalizedValue += value;
+	}
+
+	public void setLife(float life){
+		lifeSlider.normalizedValue = life;
+	}
+
+	public void setMana(float mana){
+		manaSlider.normalizedValue = mana;
+	}
+
+	public void setStamina(float stamina){
+		staminaSlider.normalizedValue = stamina;
+	}
+
+
 }
