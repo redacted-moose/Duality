@@ -4,7 +4,7 @@ using System.Collections;
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class MouseOrbitImproved : MonoBehaviour {
  
-    public Transform target;
+    public static Transform target;
     public float distance = 5.0f;
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
@@ -43,14 +43,14 @@ public class MouseOrbitImproved : MonoBehaviour {
             x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
  
-            y = ClampAngle(y, yMinLimit, yMaxLimit);
+			y = ClampAngle(y, yMinLimit, yMaxLimit);
  
             Quaternion rotation = Quaternion.Euler(y, x, 0);
  
             distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel")*5, distanceMin, distanceMax);
  
             RaycastHit hit;
-            if (Physics.Linecast (target.position, transform.position, out hit)) 
+			if (Physics.Linecast (target.position, transform.position, out hit)) 
             {
                 distance -=  hit.distance;
             }
