@@ -39,9 +39,9 @@ public class HUDController : MonoBehaviour {
 	private Button[] sinElements; 
 	private Button[] solElements; 
 
-	private Button currentWeapon;
-	private Button currentShield;
-	private Button currentSpell2;
+	private static Button currentWeapon;
+	private static Button currentShield;
+	private static Button currentSpell2;
 
 
 	private static GameObject sinCharacter;
@@ -55,6 +55,7 @@ public class HUDController : MonoBehaviour {
 	void Start () {
 
 		singleton = this;
+
 		// Find all HUD-Elements and attach to the objects
 
 		sinCharacter = GameObject.FindGameObjectWithTag ("Sin-Character");
@@ -136,7 +137,7 @@ public class HUDController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	/*
 		if (Input.GetKeyDown (KeyCode.L)) {
 
 			decreaseLife (0.1f);
@@ -146,7 +147,7 @@ public class HUDController : MonoBehaviour {
 
 			decreaseMana (0.1f);
 		}
-
+*/
 		if(Input.GetMouseButtonDown(0) ){
 			currentWeapon.interactable = true;
 		}
@@ -173,21 +174,33 @@ public class HUDController : MonoBehaviour {
 
 
 	public void changeCharacter(SinOrSol who){
+		// remember who you are
 		whoAmI = who;
 
-		bool isSin = true;
+		bool isSin = who == SinOrSol.Sin;
 
-		switch (who) {
+
+		// activate and deactivate HUD-Buttons for character
+		foreach(Button obj in sinElements){
+			obj.gameObject.SetActive (isSin);
+		}
+
+		foreach(Button obj in solElements){
+			obj.gameObject.SetActive (!isSin);
+		}
+
+		// currentWeapon should be changed after activating
+		switch (whoAmI) {
 
 		case SinOrSol.Sin:
+
+
 			currentWeapon = sinWeapon;
 			currentShield = sinShield;
 			currentSpell2 = sinSpell2;
 
 			currentCharacter = sinCharacter;
 			otherCharacter = solCharacter;
-
-			isSin = true;
 
 			break;
 
@@ -199,34 +212,16 @@ public class HUDController : MonoBehaviour {
 			currentCharacter = solCharacter;
 			otherCharacter = sinCharacter;
 
-			isSin = false;
-
 			break;
 		}
 
-		foreach(Button obj in sinElements){
-			obj.gameObject.SetActive (isSin);
-		}
-
-		foreach(Button obj in solElements){
-			obj.gameObject.SetActive (!isSin);
-		}
-
-		/*
-		if (isSin) {
-
-			sinCharacter.transform.position = solCharacter.transform.position;
-
-		} else {
-
-			solCharacter.transform.position = sinCharacter.transform.position;
-
-		}
-		*/
-
+		// set position and rotation of "new" character
 		currentCharacter.transform.position = otherCharacter.transform.position;
+		currentCharacter.transform.rotation = otherCharacter.transform.rotation;
 
+		// change camera target to the changed character
 		MouseOrbitImproved.target = currentCharacter.transform;
+
 
 		sinCharacter.SetActive (isSin);
 		solCharacter.SetActive (!isSin);
@@ -243,7 +238,6 @@ public class HUDController : MonoBehaviour {
 		} else {
 
 			changeCharacter (SinOrSol.Sin);
-
 		}
 	}
 
