@@ -16,7 +16,7 @@ public class MapFollowPlayer : MonoBehaviour {
 		float x = target.transform.position.x;
 		float z = target.transform.position.z;
 
-		transform.position = new Vector3 (x, 100.0f, z);
+		transform.position = new Vector3 (x, 150.0f, z);
 		//mapTrans.position.z = 200.0f;
 
 

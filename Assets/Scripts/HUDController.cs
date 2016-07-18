@@ -23,6 +23,9 @@ public class HUDController : MonoBehaviour {
 	private static Slider manaSlider;
 	private static Slider staminaSlider;
 
+	private static Text lifeSliderText;
+	private static Text manaSliderText;
+
 
 	private static Button solWeapon;
 	private static Button solShield;
@@ -69,6 +72,14 @@ public class HUDController : MonoBehaviour {
 		temp = GameObject.FindGameObjectWithTag ("ManaSlider");
 
 		manaSlider = temp.GetComponent<Slider> ();
+
+		temp = GameObject.Find ("LifeSliderText");
+
+		lifeSliderText = temp.GetComponent<Text> ();
+
+		temp = GameObject.Find ("ManaSliderText");
+
+		manaSliderText = temp.GetComponent<Text> ();
 
 		temp = GameObject.FindGameObjectWithTag ("Stamina");
 
@@ -137,7 +148,7 @@ public class HUDController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	/*
+		
 		if (Input.GetKeyDown (KeyCode.L)) {
 
 			decreaseLife (0.1f);
@@ -147,7 +158,7 @@ public class HUDController : MonoBehaviour {
 
 			decreaseMana (0.1f);
 		}
-*/
+
 		if(Input.GetMouseButtonDown(0) ){
 			currentWeapon.interactable = true;
 		}
@@ -243,10 +254,18 @@ public class HUDController : MonoBehaviour {
 
 	public void decreaseLife(float value){
 		lifeSlider.normalizedValue -= value;
+
+		int lifeValue = (int) ( ( lifeSlider.normalizedValue  / 1) * 100) ;
+
+		lifeSliderText.text = lifeValue + "%";
 	}
 
 	public void decreaseMana(float value){
 		manaSlider.normalizedValue -= value;
+
+		int manaValue = (int) ( ( manaSlider.normalizedValue  / 1) * 100) ;
+
+		manaSliderText.text = manaValue + "%";
 	}
 
 	public void decreasStamina(float value){
@@ -255,10 +274,18 @@ public class HUDController : MonoBehaviour {
 
 	public void increaseLife(float value){
 		lifeSlider.normalizedValue += value;
+
+		int lifeValue = (int) ( ( lifeSlider.normalizedValue  / 1) * 100) ;
+
+		lifeSliderText.text = lifeValue + "%";
 	}
 
 	public void increaseMana(float value){
 		manaSlider.normalizedValue += value;
+
+		int manaValue = (int) ( ( manaSlider.normalizedValue  / 1) * 100) ;
+
+		manaSliderText.text = manaValue + "%";
 	}
 
 	public void increaseStamina(float value){
