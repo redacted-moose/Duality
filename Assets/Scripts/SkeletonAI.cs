@@ -8,7 +8,7 @@ public class SkeletonAI : MonoBehaviour
     public float attackRadius;
     public float movementSpeed;
     public float damping;
-    public Transform target;
+    Transform target;
 
     float fpsTargetDistance;
 
