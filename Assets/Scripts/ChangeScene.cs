@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public enum DualityScene {
-	Cave = 0,
-	Forest = 1,
-	Village = 2
+	Cave = 1,
+	Forest = 2,
+	Village = 3
 }
 
 public class ChangeScene : MonoBehaviour {
