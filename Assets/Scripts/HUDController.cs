@@ -294,14 +294,23 @@ public class HUDController : MonoBehaviour {
 
 	public void setLife(float life){
 		lifeSlider.normalizedValue = life;
+
+		int lifeValue = (int) ( ( lifeSlider.normalizedValue  / 1) * 100) ;
+
+		lifeSliderText.text = lifeValue + "%";
 	}
 
 	public void setMana(float mana){
 		manaSlider.normalizedValue = mana;
+
+		int manaValue = (int) ( ( manaSlider.normalizedValue  / 1) * 100) ;
+
+		manaSliderText.text = manaValue + "%";
 	}
 
 	public void setStamina(float stamina){
 		staminaSlider.normalizedValue = stamina;
+
 	}
 
 

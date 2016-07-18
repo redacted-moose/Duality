@@ -8,12 +8,19 @@ public class SinSolCharacter : MonoBehaviour {
 	GameObject sinCharacter;
 	GameObject solCharacter;
 
+	static float lifeValue = 1.0f;
+	static float manaValue = 1.0f;
+
+
 	// Use this for initialization
 	void Start () {
 		hud =  HUDController.getSingleton();
 
 		sinCharacter = GameObject.FindGameObjectWithTag ("Sin-Character");
 		solCharacter = GameObject.FindGameObjectWithTag ("Sol-Character");
+
+		lifeValue = 1.0f;
+		manaValue = 1.0f;
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -21,8 +28,21 @@ public class SinSolCharacter : MonoBehaviour {
 		if (col.gameObject.tag == "Enemy") {
 
 			hud =  HUDController.getSingleton();
-			print ("hit enemy");
-			hud.decreaseLife (0.1f);
+
+			lifeValue -= 0.1f;
+
+
+			hud.setLife (lifeValue);
+
+			if (lifeValue <= 0.0f) {
+
+				Application.LoadLevel ("StartMenu");
+
+			}
+
+			//hud.decreaseLife (0.1f);
+
+
 		}
 	}
 
@@ -32,11 +52,32 @@ public class SinSolCharacter : MonoBehaviour {
 
 			hud =  HUDController.getSingleton();
 			print ("hit enemy");
-			hud.decreaseLife (0.0005f);
+
+			lifeValue -= 0.0005f;
+
+			hud.setLife (lifeValue);
+
+			if (lifeValue <= 0.0f) {
+
+				print ("GameOver");
+
+				Application.LoadLevel ("StartMenu");
+
+			}
+
+
 		}
 	}
 		
 
+	private void decreaseLife(float value){
+
+	}
+
+	private void increaseLife(float value){
+
+
+	}
 	
 	// Update is called once per frame
 	void Update () {

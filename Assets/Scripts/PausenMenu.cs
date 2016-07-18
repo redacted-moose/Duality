@@ -3,7 +3,7 @@ using System.Collections;
 using UnityStandardAssets;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Characters;
-using UnityStandardAssets.Cameras;
+
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.Characters;
 
@@ -24,9 +24,9 @@ public class PausenMenu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        game = GameObject.FindGameObjectWithTag("Startmenu");
-        fps = GameObject.FindGameObjectWithTag("FPS");
-        game.SetActive(false);
+        //game = GameObject.FindGameObjectWithTag("Startmenu");
+        //fps = GameObject.FindGameObjectWithTag("FPS");
+        //game.SetActive(false);
     }
 
     // Update is called once per frame
