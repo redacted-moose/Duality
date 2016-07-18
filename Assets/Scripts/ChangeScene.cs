@@ -30,7 +30,7 @@ public class ChangeScene : MonoBehaviour {
 		// other.gameObject.GetComponent<Transform>().position = new Vector3(x, y, z);
 		GameObject player = other.gameObject;
         SceneManager.LoadScene((int)target);
-		if (player.tag == "Player") {
+		if (player.tag == "Sin-Character" || player.tag == "Sol-Character") {
 			// Transform t = player.GetComponent<Transform>().transform;
 			// t.position = new Vector3(x, y, z);
             Player.loadPosition = new Vector3(x, y, z);

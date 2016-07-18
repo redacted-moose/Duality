@@ -12,25 +12,36 @@ public class SkeletonAI : MonoBehaviour
 
     float fpsTargetDistance;
 
-    Renderer renderer;
-    Rigidbody rigidbody;
+    // Renderer renderer;
+    // Rigidbody rigidbody;
     Animator animator;
     NavMeshAgent agent;
-    Transform transform;
+    // Transform transform;
 
 
     // Use this for initialization
     void Start()
     {
-        renderer = GetComponent<Renderer>();
-        rigidbody = GetComponent<Rigidbody>();
+        // renderer = GetComponent<Renderer>();
+        // rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        transform = GetComponent<Transform>();
+        // transform = GetComponent<Transform>();
     }
 
     void FixedUpdate()
     {
+        HUDController hud = HUDController.getSingleton();
+        HUDController.SinOrSol currentCharacter = hud.whoAmI;
+        switch (currentCharacter) {
+            case HUDController.SinOrSol.Sin:
+                target = GameObject.FindWithTag("Sin-Character").GetComponent<Transform>();
+            break;
+
+            case HUDController.SinOrSol.Sol:
+                target = GameObject.FindWithTag("Sol-Character").GetComponent<Transform>();
+                break;
+        }
         fpsTargetDistance = Vector3.Distance(target.position, transform.position);
         if (fpsTargetDistance >= lookRadius || target == null)
         {

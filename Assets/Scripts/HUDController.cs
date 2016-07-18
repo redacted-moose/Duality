@@ -17,7 +17,7 @@ public class HUDController : MonoBehaviour {
 		Sol
 	}
 
-	private SinOrSol whoAmI;
+    public SinOrSol whoAmI { get; private set; }
 
 	private static Slider lifeSlider;
 	private static Slider manaSlider;
