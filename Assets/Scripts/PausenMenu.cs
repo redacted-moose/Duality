@@ -7,38 +7,41 @@ using UnityStandardAssets.Cameras;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.Characters;
 
-public class PausenMenu : MonoBehaviour {
+public class PausenMenu : MonoBehaviour
+{
 
     private bool isPause = false;
     private bool panelIsActive = false;
 
     private int buttonWidth = 200;
-    private int buttonHeight = 50;
-    
+    private int buttonHeight = 40;
+
 
     GameObject game;
     GameObject fps;
     //private MouseLook[] mous;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         game = GameObject.FindGameObjectWithTag("Startmenu");
         fps = GameObject.FindGameObjectWithTag("FPS");
         game.SetActive(false);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleTimeScale();  
+            ToggleTimeScale();
         }
 
         if (Input.GetKeyDown(KeyCode.O))
-        {  
+        {
             TogglePanel(panelIsActive);
             panelIsActive = !panelIsActive;
-            
+
         }
 
     }
@@ -50,10 +53,20 @@ public class PausenMenu : MonoBehaviour {
     {
         if (isPause)
         {
-            Rect cont = new Rect(Screen.width / 2 - buttonWidth/2, 100, buttonWidth, buttonHeight);
-            Rect options = new Rect(Screen.width / 2 - buttonWidth / 2, 180, buttonWidth, buttonHeight);
-            Rect restart = new Rect(Screen.width / 2 - buttonWidth / 2, 260, buttonWidth, buttonHeight);
-            Rect quit = new Rect(Screen.width / 2 - buttonWidth / 2, 340, buttonWidth, buttonHeight);            
+            //GUIText pause = new GUIText();
+            //pause.text = "Pause";
+            //pause.alignment = TextAlignment.Center;
+            //GUILayoutOption test = new GUILayout();
+            //GUILayout.Height(50l)
+            //GUI te2wst = GUILayout.Label("Game is paused!");
+            //GUILayout.Width(500);
+
+
+
+            Rect cont = new Rect(Screen.width / 2 - buttonWidth / 2, 20, buttonWidth, buttonHeight);
+            Rect options = new Rect(Screen.width / 2 - buttonWidth / 2, 90, buttonWidth, buttonHeight);
+            Rect restart = new Rect(Screen.width / 2 - buttonWidth / 2, 160, buttonWidth, buttonHeight);
+            Rect quit = new Rect(Screen.width / 2 - buttonWidth / 2, 230, buttonWidth, buttonHeight);
 
             if (GUI.Button(cont, "Continue"))
             {
@@ -61,7 +74,7 @@ public class PausenMenu : MonoBehaviour {
             }
             if (GUI.Button(options, "Options"))
             {
-               
+
             }
             if (GUI.Button(restart, "Restart"))
             {
